@@ -1,0 +1,308 @@
+/*footer新增开始*/
+
+.t4_tmenus {
+	height: 47px;
+	line-height: 47px;
+	background: #34373a;
+	border-bottom: 1px solid #2c2d2d;
+	margin-bottom: 25px;
+}
+
+.t4_w {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.t4_tmenus ul {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.t4_tmenus ul li {
+	text-align: center;
+	float: left;
+	width: 14.2%;
+	color: #73d6dc;
+}
+
+.t4_tmenus ul li a {
+	display: block;
+	color: #73d6dc;
+}
+
+.t4_tmenus ul li a:hover {
+	color: #fff;
+}
+
+
+/*footer新增结束*/
+
+
+/*定义滚动条宽度及背景 高度分别对应横竖调尺寸*/
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #dedede;
+}
+
+
+/*2018.4.3 lss recomposed 滚动条样式*/
+
+
+/*滚动条夹角*/
+
+::-webkit-scrollbar-corner {
+	background-color: #299eba;
+	;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #a6bfcc;
+}
+
+/*个人中心的左侧开始*/
+
+.grzx_box {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 25px 0 25px;
+}
+
+.grzx-left {
+	background: #fff;
+	width: 320px;
+	float: left;
+}
+
+.grzx-left_title {
+	background: #38abc5;
+	height: 58px;
+	line-height: 58px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 600;
+	padding-left: 20px;
+	border-bottom: 1px solid #3db3ce;
+}
+
+.grzx-left_contenr {
+	background: #1d97b5;
+}
+
+.grzx-left_contenr ul {}
+
+.grzx-left_contenr ul li {
+	height: 50px;
+	line-height: 50px;
+	/*list-style-type: square;*/
+	color: #fff;
+	padding-left: 60px;
+	font-size: 14px;
+	border-top: 1px solid #1c8aa5;
+	border-bottom: 1px solid #22a1bf;
+}
+
+.grzx-left_contenr ul a:hover li {
+	transition: 0.3s;
+	padding-left: 70px;
+	color: #b5e3ef;
+	font-weight: 600;
+}
+
+.grzx-left_contenr ul li span {
+	width: 5px;
+	height: 5px;
+	background: #fff;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+
+/*个人中心的左侧结束*/
+
+
+/*右我的登录开始*/
+
+.grzx-right {
+	float: right;
+	width: 855px;
+	background: #fff;
+}
+
+.grzx-title {
+	position: relative;
+	height: 58px;
+	line-height: 58px;
+	font-size: 18px;
+	color: #45668f;
+	background: #fff;
+	border-bottom: 1px solid #e4ebf0;
+	padding-left: 20px;
+}
+
+.grzx-title span {
+	font-size: 22px;
+	color: #ff7468;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+.grzx-title .fs,
+.tag5 .fs {
+	float: right;
+	font-size: 16px;
+	color: #5d7a9e;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.grzx-box-list {
+	padding: 20px 27px;
+	background: #fff;
+	border-bottom: 1px solid #e4ebf0;
+	position: relative;
+}
+
+.grzx-box-list:hover {
+	background: #fffdfa;
+	cursor: default;
+}
+
+.grzx-box-list .name {
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+.grzx-box-list .gxsj {
+	width: 80%;
+	font-size: 14px;
+	color: #aab8ca;
+	line-height: 34px;
+	height: 34px;
+	overflow: hidden;
+}
+
+.grzx-box-list .name a {
+	color: #45668f;
+}
+
+.grzx-box-list .gxsj span {
+	color: #5d7a9e;
+	padding-right: 50px;
+}
+
+.anniu_box {
+	position: absolute;
+	left: 670px;
+	top: 52px;
+	color: #393a3a;
+}
+
+.anniu_box button {
+	height: 35px;
+	padding: 0 22px;
+	background: #619ebd;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	outline: none;
+}
+
+
+/*右我的登录结束*/
+
+
+/*分页*/
+
+.page {
+	margin: 0px auto;
+	background: #fff;
+	text-align: center;
+	padding: 25px 0;
+	font-size: 15px;
+	color: #5d7a9e;
+}
+
+
+/*右我的修改开始*/
+
+.llb {
+	margin-top: 25px;
+}
+
+.zmm {
+	width: 250px;
+	margin-right: 15px;
+	text-align: right;
+	float: left;
+	font-size: 16px;
+	height: 46px;
+	line-height: 46px;
+	color: #5d7a9e;
+}
+
+.zmm .rred {
+	color: red;
+	margin-right: 10px;
+}
+
+.yiput {
+	float: left;
+	margin-top: 2px;
+}
+
+.yiput input {
+	width: 390px;
+	height: 40px;
+	line-height: 40px;
+	border: solid 1px #c5c5c5;
+	padding: 0 0 0 35px;
+	font-size: 16px;
+	color: #6c6c6c;
+}
+
+.qd {
+	background: #ff7468;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	width: 165px;
+	height: 42px;
+	line-height: 42px;
+	font-size: 16px;margin-left: 265px;
+	margin-top: 50px;
+}
+
+
+
+/*我的申请开始*/
+.tab02 {
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    font-size: 14px;
+    color: #666565;
+    background: #fff;
+    margin-bottom: 15px;
+}
+.hh{background:#f0f0f0;}
+.tab02 td {
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 42px;
+    text-indent: 12px;
+}
+.cz{color:#3dbfdc;}

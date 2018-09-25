@@ -1,0 +1,22 @@
+{
+  "name": "menhu",
+  "version": "1.0.0",
+  "description": "menhu",
+  "config": {
+    "platform": "PC"
+  },
+  "main": "index.js",
+  "author": "WeireFE",
+  "license": "ISC",
+  "scripts": {
+    "clean": "node ../../scripts/tasks/clean.js",
+    "serve:dev": "node ../../scripts/tasks/serve.js --dev",
+    "serve:prod": "node ../../scripts/tasks/serve.js --prod",
+    "build:dev": "node ../../scripts/tasks/build.js --dev",
+    "build:prod": "node ../../scripts/tasks/build.js --prod"
+  },
+  "dependencies": {
+    "iview": "^3.1.1-rc.1",
+    "swiper": "^4.3.5"
+  }
+}

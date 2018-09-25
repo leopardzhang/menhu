@@ -1,0 +1,10 @@
+{
+  "generator-fe": {
+    "generator-name": "generator-fe",
+    "generator-version": "1.3.0",
+    "name": "menhu",
+    "version": "1.0.0",
+    "description": "menhu",
+    "platform": "PC"
+  }
+}

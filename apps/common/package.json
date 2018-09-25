@@ -1,0 +1,13 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "Weiresearch font-end common application",
+  "main": "index.js",
+  "scripts": {
+    "clean": "node ../../scripts/tasks/clean.js",
+    "dll:dev": "node ../../scripts/tasks/dll.js --dev",
+    "dll:prod": "node ../../scripts/tasks/dll.js --prod"
+  },
+  "author": "weiresearch",
+  "license": "ISC"
+}
