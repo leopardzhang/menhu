@@ -1,0 +1,228 @@
+/*footer新增开始*/
+
+.t4_tmenus {
+	height: 47px;
+	line-height: 47px;
+	background: #34373a;
+	border-bottom: 1px solid #2c2d2d;
+	margin-bottom: 25px;
+}
+
+.t4_w {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.t4_tmenus ul {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.t4_tmenus ul li {
+	text-align: center;
+	float: left;
+	width: 14.2%;
+	color: #73d6dc;
+}
+
+.t4_tmenus ul li a {
+	display: block;
+	color: #73d6dc;
+}
+
+.t4_tmenus ul li a:hover {
+	color: #fff;
+}
+
+
+/*footer新增结束*/
+
+
+/*定义滚动条宽度及背景 高度分别对应横竖调尺寸*/
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #dedede;
+}
+
+
+/*2018.4.3 lss recomposed 滚动条样式*/
+
+
+/*滚动条夹角*/
+
+::-webkit-scrollbar-corner {
+	background-color: #299eba;
+	;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #a6bfcc;
+}
+
+/*个人中心的左侧开始*/
+/*搜索开始*/
+.t1-sousuo {
+    border: 1px solid #cfdce4;
+    width: 320px;
+    border-radius: 5px;
+    height: 42px;
+    position: relative;
+    background: #fff;
+    margin-bottom: 15px;
+}
+.t1-sousuo .ss-box-srk {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 260px;
+}
+.t1-sousuo .ss-box-img {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+.t1-sousuo .ss-box-srk input {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #aab8ca;
+    width: 210px;
+    height: 22px;
+    line-height: 22px;
+    outline: none;
+}
+
+/*搜索结束*/
+.grzx_box {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 25px 0;
+}
+
+.grzx-left {
+	/*background: #fff;*/
+	width: 320px;
+	float: left;
+}
+
+.grzx-left_title {
+	background: #38abc5;
+	height: 58px;
+	line-height: 58px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 600;
+	padding-left: 20px;
+	border-bottom: 1px solid #3db3ce;
+}
+
+.grzx-left_contenr {
+	background: #1d97b5;
+	margin-bottom: 30px;
+}
+
+.grzx-left_contenr ul li {
+	cursor: pointer;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	padding-left: 60px;
+	font-size: 14px;
+	border-top: 1px solid #1c8aa5;
+	border-bottom: 1px solid #22a1bf;
+}
+
+
+.grzx-left_contenr ul li span {
+	width: 5px;
+	height: 5px;
+	background: #fff;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+
+/*个人中心的左侧结束*/
+
+
+/*右开始*/
+
+.grzx-right {
+	float: right;
+	width: 855px;
+	background: #fff; padding: 15px;
+}
+.tab02 {
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    font-size: 14px;
+    color: #666565;
+    background: #fff;
+    margin-bottom: 15px;
+}
+.tab02 .ta {
+    font-size: 16px;
+    color: #404040;
+    background: #f0f0f0;
+}
+.tab02 td {
+
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 42px;
+    text-indent: 12px;
+}
+.xzk{    border: 1px solid #93cbe9;
+    background: #bee0f2;
+    text-align: center;
+    color: #2798d4;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 13px;}
+.tab02 .zi{width: 570px;}
+.tab02 .ri{width: 420px;}
+
+/*右结束*/
+
+
+/*分页*/
+
+.page {
+	margin: 0px auto;
+	background: #fff;
+	text-align: center;
+	padding: 25px 0;
+	font-size: 15px;
+	color: #5d7a9e;
+}
+
+.act {
+	background: #d8eff5;
+	a {
+		color: #1d97b5;
+
+		span {
+			background: #1d97b5 !important;
+		}
+	}
+}
+
+.none {
+	color: #999;
+	text-align: center;
+	font-size: 14px;
+}

@@ -13,7 +13,8 @@ export default {
 			username: '',
 			password: '',
 			validateCode: '',
-			currentUserId: ''
+			currentUserId: '',
+			keyword: ''
 		}
 	},
 
@@ -116,6 +117,15 @@ export default {
 				this.$Message.success('您已成功退出');
 				this.getUserInfo();
 			});
+		},
+
+		fnSearch() {
+			this.$router.push({
+				path: '/search',
+				query: {
+					keyword: this.keyword
+				}
+			})
 		}
 	},
 	computed: {

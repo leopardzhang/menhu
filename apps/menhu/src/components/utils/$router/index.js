@@ -56,13 +56,67 @@ const router = new VueRouter({
             }, 'static/views/apiMenu/index');
         }
     }, {
+		path: '/search',
+        name: 'search',
+        component(resolve) {
+            require.ensure(['../../views/search/index.vue'], () => {
+                resolve(require('../../views/search/index.vue'));
+            }, 'static/views/search/index');
+        }
+	}, {
+		path: '/dataShare',
+        name: 'dataShare',
+        component(resolve) {
+            require.ensure(['../../views/dataShare/index.vue'], () => {
+                resolve(require('../../views/dataShare/index.vue'));
+            }, 'static/views/dataShare/index');
+        }
+	}, {
+		path: '/search',
+        name: 'search',
+        component(resolve) {
+            require.ensure(['../../views/search/index.vue'], () => {
+                resolve(require('../../views/search/index.vue'));
+            }, 'static/views/search/index');
+        }
+	}, {
 		path: '/personal',
         name: 'personal',
         component(resolve) {
             require.ensure(['../../views/personal/index.vue'], () => {
                 resolve(require('../../views/personal/index.vue'));
             }, 'static/views/personal/index');
-        }
+        },
+		children: [{
+			path: '/',
+	        redirect: {
+	            name: 'password'
+	        }
+		},{
+	        path: '/password',
+	        name: 'password',
+	        component(resolve) {
+	            require.ensure(['../../views/personal/password/index.vue'], () => {
+	                resolve(require('../../views/personal/password/index.vue'));
+	            }, 'static/views/personal/password/index');
+	        }
+	    },{
+	        path: '/apply',
+	        name: 'apply',
+	        component(resolve) {
+	            require.ensure(['../../views/personal/apply/index.vue'], () => {
+	                resolve(require('../../views/personal/apply/index.vue'));
+	            }, 'static/views/personal/apply/index');
+	        }
+	    },{
+	        path: '/subscribe',
+	        name: 'subscribe',
+	        component(resolve) {
+	            require.ensure(['../../views/personal/subscribe/index.vue'], () => {
+	                resolve(require('../../views/personal/subscribe/index.vue'));
+	            }, 'static/views/personal/subscribe/index');
+	        }
+	    }]
 	}]
 });
 

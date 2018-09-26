@@ -529,3 +529,12 @@
 	margin: 0px auto;
 	text-align: center;
 }
+
+.textoverflow {
+	width: 12em;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+	display: inline-block;
+	line-height: 1;
+}

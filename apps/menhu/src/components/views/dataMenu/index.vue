@@ -56,7 +56,7 @@
 					</div>
 					<div class="name">
 						<router-link :to="{ name: 'dataDetails', query: { table_id: item.table_id }}">
-							{{ item.cusername }}
+							{{ item.subject_base_name }}
 						</router-link> &nbsp;&nbsp;
 
 					</div>
@@ -64,7 +64,7 @@
 						更新时间：<span>{{ item.cdateDateStr }}</span> 查看：
 						<span>{{ item.visitnum_sum }}人</span>下载：
 						<span>{{ item.downnum_sum }}次</span> 数据领域：
-						<span>{{ item.sjly }} </span>
+						<span class="textoverflow">{{ item.sjly }} </span>
 					</div>
 					<div class="gxsj" style="width: 100%; max-width: 830px;">
 						<div style="max-width: 780px;display:inline-block;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">

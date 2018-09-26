@@ -11,7 +11,9 @@
 		                </div>
 		                <div class="login_box fr">
 		                    <a v-if="!userinfo" @click="loginShow" href="javascript:" class="login" id="login_btn">[ 登录 ]</a>
-							<a v-if="!!userinfo" href="javascript:" class="login">[ 个人中心 ]</a>
+
+							<!-- <router-link :to="{ name: 'password' }" class="login">[ 个人中心 ]</router-link> -->
+							<a v-if="userinfo" class="welcome">欢迎您！{{ userinfo.realName }}</a>
 							<a v-if="!!userinfo" @click="exit" href="javascript:" class="login">[ 退出 ]</a>
 		                </div>
 		            </div>
@@ -47,21 +49,21 @@
 		                    </li>
 		                    <li>
 		                        <a href="javascript:">
-										<img src="./images/tb_09.png">
-										<span>开放指数</span>
-									</a>
+									<img src="./images/tb_09.png">
+									<span>开放指数</span>
+								</a>
+		                    </li>
+		                    <li>
+								<router-link :to="{ name: 'dataShare'}">
+									<img src="./images/tb_11.png">
+									<span>资料共享</span>
+								</router-link>
 		                    </li>
 		                    <li>
 		                        <a href="javascript:">
-										<img src="./images/tb_11.png">
-										<span>数据申请</span>
-									</a>
-		                    </li>
-		                    <li>
-		                        <a href="javascript:">
-										<img src="./images/tb_13.png">
-										<span>开放动态</span>
-									</a>
+									<img src="./images/tb_13.png">
+									<span>开放动态</span>
+								</a>
 		                    </li>
 		                </ul>
 		            </div>
@@ -100,8 +102,8 @@
 		                </div>
 		                <div class="search_box fr">
 		                    <div class="search">
-		                        <input class="text" type="text" placeholder="请输入关键字" />
-		                        <input class="btn" type="button" />
+		                        <input class="text" v-model="keyword" placeholder="请输入关键字" />
+		                        <input class="btn" type="button" @click="fnSearch" />
 		                    </div>
 		                </div>
 		            </div>
@@ -134,7 +136,7 @@
 	        </div>
 	        <div class="content">
 	            <p>
-	                Copyright © 2014-2017 www.gyopendata.gov.cn All Rights Reserved<br>黔ICP备16010582号 网站访问量：<br>主办单位：齐齐哈尔市大数据发展管理委员会建设单位：齐齐哈尔市信息产业发展中心<br>(建议使用Chrome、360浏览器(极速模式)，1366*768以上分辨率浏览本站)
+	                Copyright © 2014-2017 www.gyopendata.gov.cn All Rights Reserved<br>黑ICP备16010582号 网站访问量：<br>主办单位：佳木斯市大数据发展管理委员会 建设单位：佳木斯市信息产业发展中心<br>(建议使用Chrome、360浏览器(极速模式)，1366*768以上分辨率浏览本站)
 	            </p>
 	        </div>
 	    </footer>

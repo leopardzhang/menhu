@@ -202,6 +202,10 @@ input::-webkit-input-placeholder {
 					&:hover {
 						background: rgba(255, 255, 255, 0.2);
 					}
+
+					&.router-link-exact-active {
+						background: rgba(255, 255, 255, 0.2);
+					}
 				}
 			}
 		}
@@ -411,4 +415,8 @@ input::-webkit-input-placeholder {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.welcome {
+	margin-right: 20px;
 }

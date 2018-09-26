@@ -61,7 +61,7 @@ export default {
 		}
 	},
 
-	beforeCreate() {
+	created() {
 		const _this = this;
 
 		$.ajax({
@@ -191,6 +191,7 @@ export default {
 		 */
 		async getRightListData() {
 			const _this = this;
+			console.log(this);
 			const response = await $.ajax({
 				url: `${$apis.url}/DataService/kway/data/sjdetail_MetadataTable`,
 				data: {

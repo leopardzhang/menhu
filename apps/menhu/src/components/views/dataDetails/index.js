@@ -68,7 +68,7 @@ export default {
 				},
 				{
 					title: '信息项代码',
-					key: 'col_name'
+					key: 'col_code'
 				},
 				{
 					title: '数据格式',
