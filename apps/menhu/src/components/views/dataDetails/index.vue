@@ -6,9 +6,8 @@
                 <div class="detail-header">
                     <span class="detail-title" v-if="!loading">{{ tableData.dataList.subject_base_name }}</span>
                     <div class="xzz">
-                        <span class="dy"><i class="dyy"></i>订阅</span>
-                        <span class="sq"><i class="sqq"></i>申请</span>
-                        <span class="jc"><i class="jcc"></i>纠错</span>
+                        <span class="dy"><Icon type="md-pricetag" size="16" />订阅</span>
+                        <span class="sq"><Icon type="md-albums" size="16" />申请</span>
                     </div>
                 </div>
                 <div class="detail-simple-info">

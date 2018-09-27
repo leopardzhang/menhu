@@ -5,7 +5,7 @@ import $apis from '../$apiconfigs';
 export default {
 	data() {
 		return {
-			imgBaseUrl: $apis.url,
+			imgBaseUrl: $apis.imgBaseUrl,
 			btnList: [
 				{
 					name: '主题分类'

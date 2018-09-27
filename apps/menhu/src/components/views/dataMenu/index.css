@@ -235,16 +235,6 @@
 	color: #393a3a;
 }
 
-.anniu_box button {
-	height: 35px;
-	padding: 0 22px;
-	background: #619ebd;
-	border: none;
-	border-radius: 5px;
-	color: #fff;
-	outline: none;
-}
-
 
 .sj{position: absolute; top: 15px;right:37px;}
 .sj .sub-btn-csv {
@@ -512,16 +502,6 @@
 	color: #393a3a;
 }
 
-.anniu_box button {
-	height: 35px;
-	padding: 0 22px;
-	background: #619ebd;
-	border: none;
-	border-radius: 5px;
-	color: #fff;
-	outline: none;
-}
-
 
 /*分页*/
 
@@ -537,4 +517,8 @@
     white-space:nowrap;
 	display: inline-block;
 	line-height: 1;
+}
+
+.upload_box {
+	padding-top: 10px;
 }

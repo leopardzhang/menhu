@@ -60,7 +60,7 @@
 	                    <td colspan="4" class="ta">培训课件</td>
 	                </tr>
 	                <tr v-for="(item, index) in rightData.dataList">
-	                    <td>{{ index + 1 }}</td>
+	                    <td>{{ index + 1 + ((page-1) * count) }}</td>
 	                    <td :class="{zi: !navChose, ri: navChose}">{{ item.data_resource_name }}</td>
 						<td v-if="navChose">上传时间：{{ item.cdateStr }}</td>
 	                    <td v-if="!navChose">下载：{{ item.down_count }}</td>

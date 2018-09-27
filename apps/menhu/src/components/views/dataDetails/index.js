@@ -16,7 +16,6 @@ export default {
 					table_id
 				},
 				success(res) {
-					console.log(res.data);
 					vm.tableData = res.data;
 				},
 				fail(err) {
@@ -43,12 +42,6 @@ export default {
 				},
 				{
 					name: '资源数据查询'
-				},
-				{
-					name: '数据图谱'
-				},
-				{
-					name: '关联资源目录'
 				},
 				{
 					name: '资源下载'
