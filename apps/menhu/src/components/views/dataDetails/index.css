@@ -1,3 +1,18 @@
+/*定义滚动条宽度及背景 高度分别对应横竖调尺寸*/
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #dedede;
+}
 /*footer新增开始*/
 .t4_tmenus {
     height: 47px;
@@ -31,7 +46,7 @@
 .contentr {
 	width: 1200px;
 	margin: 0 auto;
-	padding-top: 25px;
+	padding: 25px 0;
 }
 
 .contentr::before {
@@ -423,4 +438,12 @@
 	padding: 0 8px;
 	margin-right: 5px;
 	outline: none;
+}
+.upload_box {
+	padding-top: 10px;
+}
+
+.page {
+	margin: 0px auto;
+	text-align: center;
 }

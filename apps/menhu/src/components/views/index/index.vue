@@ -28,7 +28,7 @@
             <div class="item_box clear" v-show="btnIndex == 1">
                 <ul class="text_list clear">
                     <li v-for="(item, index) in indexData.orgs" v-show="showAll || index<20">
-						<router-link :to="{ name: 'dataMenu', params: {fl: 1, table_type_branchid: item.t_org_id} }">
+						<router-link :to="{ name: 'dataMenu', query: {fl: 1, table_type_branchid: item.t_org_id} }">
 							{{ item.name }}
 						</router-link>
                     </li>

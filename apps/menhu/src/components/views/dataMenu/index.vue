@@ -72,16 +72,16 @@
 					</div>
 					<div class="anniu_box">
 						<Button
-							type="success"
+							type="warning"
 							@click="handleClick(item.dy_id, false, index)"
 							v-if="item.dyzt == 1">
-							已订阅
+							取消订阅
 						</Button>
 						<Button
-							type="primary"
+							type="success"
 							@click="handleClick(item.table_id, true, index)"
 							v-if="item.dyzt != 1">
-							订阅
+							订阅资源
 						</Button>
 						<Button type="primary" @click="handelApply(item.table_id, item.subject_base_name, item.org_id)">申请</Button>
 					</div>
@@ -108,7 +108,7 @@
 			title="申请"
 			ok-text="提交"
 			cancel-text="取消"
-			@on-ok="handleSubmit('formItem')">
+			@on-ok="handleSubmit('formItem', 2)">
 			<Form
 				ref="formItem"
 				:model="formItem"
@@ -171,6 +171,9 @@
 		        <FormItem label="申请用途" prop="request_purpose">
 		            <Input v-model="formItem.request_purpose" type="textarea" :autosize="{minRows: 3}"></Input>
 		        </FormItem>
+				<FormItem>
+					<Button type="info" @click="handleSubmit('formItem', 1)">保存到草稿</Button>
+				</FormItem>
 		    </Form>
 		</Modal>
 	</div>

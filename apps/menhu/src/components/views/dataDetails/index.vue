@@ -3,11 +3,16 @@
     <div class="contentr">
         <div class="detail-right">
             <div class="right-title">
-                <div class="detail-header">
-                    <span class="detail-title" v-if="!loading">{{ tableData.dataList.subject_base_name }}</span>
+                <div class="detail-header" v-if="!loading">
+                    <span class="detail-title">{{ tableData.dataList.subject_base_name }}</span>
                     <div class="xzz">
-                        <span class="dy"><Icon type="md-pricetag" size="16" />订阅</span>
-                        <span class="sq"><Icon type="md-albums" size="16" />申请</span>
+                        <span class="sq" @click="handleClick">
+							<Icon type="md-pricetag" size="16" />
+							{{ tableData.dataList.dyzt == 1 ? '取消订阅' : '订阅'}}
+						</span>
+                        <span
+							class="sq"
+							@click="handelApply(tableData.dataList.table_id, tableData.dataList.subject_base_name, tableData.dataList.org_id)"><Icon type="md-albums" size="16" />申请</span>
                     </div>
                 </div>
                 <div class="detail-simple-info">
@@ -33,8 +38,6 @@
 							class="data-info">
 							{{ item.name }}
 						</li>
-
-
                     </ul>
                 </div>
                 <div class="detail-info-list tab-body">
@@ -136,13 +139,119 @@
                                     <Table border stripe :columns="columns" :data="tableData.cols"></Table>
 								</div>
 							</div>
+							<div class="detail-base-list" v-if="!loading && tabIndex == 2">
+								<div style="font-size: 14px;font-weight: 600;line-height: 30px;color: #1b84a2;">
+                                    <i class="iconfont"></i>资源数据查询
+                                </div>
+								<div class="info-list">
+                                    <Table v-if="dataTable.rows" border stripe :columns="dataColumns" :data="dataTable.rows"></Table>
+								</div>
+							</div>
+							<div class="detail-base-list" v-if="!loading && tabIndex == 3">
+								<ButtonGroup size="large">
+									<Button
+										v-for="item in btnType"
+										v-if="btnList.Excelzippath"
+										size="large"
+										:type="item.type">
+										{{ item.name }}
+									</Button>
+								</ButtonGroup>
+							</div>
                             <!--  右侧基本信息结束 -->
+
+							<div class="page" style="padding:62px 0;" v-if="!loading && tabIndex == 2">
+								<Page :total="dataTable.total"
+								show-sizer
+								:page-size-opts="[5, 10, 20]"
+								@on-page-size-change="changeSize"
+								@on-change="changePage" />
+							</div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+	<Modal
+		v-model="showModel"
+		ref="model"
+		width="700"
+		:closable="false"
+		:mask-closable="false"
+		:loading="true"
+		class-name="vertical-center-modal"
+		title="申请"
+		ok-text="提交"
+		cancel-text="取消"
+		@on-ok="handleSubmit('formItem', 2)">
+		<Form
+			ref="formItem"
+			:model="formItem"
+			:rules="ruleValidate"
+			:label-width="80">
+			<Row>
+				<Col span="12">
+					<FormItem label="开始时间" prop="request_sdate">
+						<DatePicker
+							type="date"
+							placeholder="选择开始时间"
+							style="width:254px"
+							v-model="formItem.request_sdate">
+						</DatePicker>
+					</FormItem>
+				</Col>
+				<Col span="12">
+					<FormItem label="结束时间" prop="request_edate">
+						<DatePicker
+							type="date"
+							placeholder="选择结束时间"
+							style="width:254px"
+							v-model="formItem.request_edate">
+						</DatePicker>
+					</FormItem>
+				</Col>
+			</Row>
+			<Row>
+				<Col span="12">
+					<FormItem label="联系人" prop="contacts_name">
+						<Input
+							v-model="formItem.contacts_name"
+							placeholder="输入联系人姓名"></Input>
+					</FormItem>
+				</Col>
+				<Col span="12">
+					<FormItem label="联系电话" prop="contacts_tel">
+						<Input
+						v-model="formItem.contacts_tel"
+						placeholder="输入联系电话"></Input>
+					</FormItem>
+				</Col>
+			</Row>
+			<FormItem label="上传附件">
+				<Input v-model="formItem.file_path" style="width: 250px" disabled placeholder="文件路径" />
+				<div class="upload_box">
+					<Upload
+						ref="uploadFiles"
+						action="http://10.64.5.140:8888/DataService/kway/data/Applyupload"
+						:on-success="fnUploadSuccess">
+						<Button type="primary">上传附件</Button>
+					</Upload>
+				</div>
+			</FormItem>
+			<FormItem label="交换方式" prop="exchange_type">
+				<RadioGroup v-model="formItem.exchange_type">
+					<Radio :label="item.id" v-for="item in exchangeList">{{ item.remarks }}</Radio>
+				</RadioGroup>
+			</FormItem>
+			<FormItem label="申请用途" prop="request_purpose">
+				<Input v-model="formItem.request_purpose" type="textarea" :autosize="{minRows: 3}"></Input>
+			</FormItem>
+			<FormItem>
+				<Button type="info" @click="handleSubmit('formItem', 1)">保存到草稿</Button>
+			</FormItem>
+		</Form>
+	</Modal>
 </div>
 </template>
 

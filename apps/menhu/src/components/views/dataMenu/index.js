@@ -3,19 +3,7 @@ import iView from 'iview';
 import $apis from '../$apiconfigs';
 import { mapActions, mapGetters } from 'vuex';
 
-function formatNumber(num) {
-	return num > 9 ? num : '0' + num;
-}
-
-function formatDate(info) {
-	const year = new Date(info).getFullYear();
-	const month = formatNumber(new Date(info).getMonth());
-	const date = formatNumber(new Date(info).getDate());
-
-	const res = year + '-' + month + '-' + date;
-
-	return res;
-}
+import { formatDate } from '../$utils';
 
 export default {
 	beforeRouteEnter(to, from, next) {
@@ -366,6 +354,10 @@ export default {
 					if(res.data == 0) {
 						_this.$Message.success('订阅成功');
 						_this.rightData.table[index].dyzt = 1;
+						_this.getRightListData().then((res) => {
+							_this.loading = false;
+							_this.rightData = res.data;
+						});
 					} else {
 						_this.$Message.error('订阅失败！请联系管理员或刷新后重试');
 					}
@@ -388,6 +380,10 @@ export default {
 				data,
 				success(res) {
 					if(res.data == 1) {
+						_this.getRightListData().then((res) => {
+							_this.loading = false;
+							_this.rightData = res.data;
+						});
 						_this.$Message.success('已取消订阅');
 						_this.rightData.table[index].dyzt = 0;
 					} else {
@@ -403,8 +399,10 @@ export default {
 		/**
 		 * 提交
 		 */
-		handleSubmit (name) {
+		handleSubmit (name, sts) {
 			const _this = this;
+
+			_this.formItem.sts = sts;
 
             this.$refs[name].validate((valid) => {
                 if (valid) {
@@ -437,10 +435,6 @@ export default {
 					}, 2000);
                 }
             });
-		},
-
-		clearFiles() {
-
 		},
 
 		/**
