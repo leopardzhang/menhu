@@ -56,6 +56,14 @@ const router = new VueRouter({
             }, 'static/views/apiMenu/index');
         }
     }, {
+        path: '/apiDetails',
+        name: 'apiDetails',
+        component(resolve) {
+            require.ensure(['../../views/apiDetails/index.vue'], () => {
+                resolve(require('../../views/apiDetails/index.vue'));
+            }, 'static/views/apiDetails/index');
+        }
+    }, {
 		path: '/search',
         name: 'search',
         component(resolve) {

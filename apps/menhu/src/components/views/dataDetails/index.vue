@@ -35,7 +35,8 @@
 							:class="{ active: index == tabIndex}"
 							@click="changeTab(index)"
 							v-for="(item, index) in tab"
-							class="data-info">
+							class="data-info"
+							v-if="downloadAble || index != 3">
 							{{ item.name }}
 						</li>
                     </ul>
@@ -144,19 +145,34 @@
                                     <i class="iconfont"></i>资源数据查询
                                 </div>
 								<div class="info-list">
-                                    <Table v-if="dataTable.rows" border stripe :columns="dataColumns" :data="dataTable.rows"></Table>
+                                    <Table
+										v-if="dataTable.rows"
+										border
+										stripe
+										:columns="dataColumns"
+										:data="dataTable.rows">
+									</Table>
 								</div>
 							</div>
 							<div class="detail-base-list" v-if="!loading && tabIndex == 3">
 								<ButtonGroup size="large">
 									<Button
 										v-for="item in btnType"
-										v-if="btnList.Excelzippath"
 										size="large"
-										:type="item.type">
+										:type="item.type"
+										@click="checkDownload(item.str)">
 										{{ item.name }}
 									</Button>
 								</ButtonGroup>
+								<div style="padding-top: 25px;">
+									<Table
+										v-if="pageTable"
+										border
+										stripe
+										:columns="pagetab"
+										:data="pageTable">
+									</Table>
+								</div>
 							</div>
                             <!--  右侧基本信息结束 -->
 

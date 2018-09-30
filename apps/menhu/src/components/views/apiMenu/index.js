@@ -81,7 +81,7 @@ export default {
 			success(res) {
 				_this.hotDataList = res.data;
 			}
-		})
+		});
 	},
 
 	methods: {
@@ -187,7 +187,7 @@ export default {
 		async getRightListData() {
 			const _this = this;
 			const response = await $.ajax({
-				url: `${$apis.url}/DataService/kway/data/apilist_MetadataTable`,
+				url: `${$apis.url}/DataService/kway/data/apidetail_MetadataTable`,
 				data: {
 					page: _this.page,
 					count: _this.count,

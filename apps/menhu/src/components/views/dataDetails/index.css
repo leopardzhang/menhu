@@ -447,3 +447,7 @@
 	margin: 0px auto;
 	text-align: center;
 }
+
+.ivu-table-cell a {
+	color: #2db7f5
+}

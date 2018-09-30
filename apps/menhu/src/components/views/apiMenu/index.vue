@@ -5,7 +5,7 @@
 	</div>
     <div class="liebiao_box" v-if="!loading">
         <div class="t1-sub-paihang">
-            <div class="ph_tiile">数据下载排行</div>
+            <div class="ph_tiile">热门数据</div>
             <div class="ph_contenr">
                 <ul class="fontt">
 					<li
@@ -52,7 +52,7 @@
                 </ul>
             </div>
             <div class="t1-sub-titler">
-                【共<span>{{ rightData.total }}</span>个API】
+                【共<span>{{ rightData.table_num }}</span>个API】
 				<div class="xzz">
 					<div
 						:class="{activer: order == index, xzzz: order != index}"
@@ -68,16 +68,12 @@
 				<Spin size="large"></Spin>
 			</div>
 			<!-- item -->
-            <div class="t1-sub-box-lister" v-show="!loadingRight" v-for="(item, index) in rightData.rows">
+            <div class="t1-sub-box-lister" v-show="!loadingRight" v-for="(item, index) in rightData.table">
 
                 <div class="name">
-					<!-- <router-link :to="{ name: 'apiDetails', query: { table_id: item.table_id }}">
+					<router-link :to="{ name: 'apiDetails', query: { tableId: item.table_id }}">
 						{{ item.subject_base_name }}
-					</router-link> -->
-                    <a href="javascript:">{{ item.subject_base_name }}</a>
-                    <div class="xzz">
-                        <span class="sq"><i class="sqq"></i>申请</span>
-                    </div>
+					</router-link>
                 </div>
                 <div class="i"><img src="./images/i_11.png" /></div>
                 <div style="float: left; width: 730px;">
@@ -104,7 +100,7 @@
 			<!-- item -->
 
             <div class="page" style="box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);">
-				<Page :total="parseInt(rightData.total)"
+				<Page :total="parseInt(rightData.table_num)"
 				show-sizer
 				:page-size-opts="[5, 10, 20]"
 				@on-page-size-change="changeSize"

@@ -20,6 +20,13 @@ export default {
 					userid: vm.userinfo.userId
 				},
 				success(res) {
+					const type = res.data.dataList.data_type;
+
+					if(type != 12 && type != 13) {
+						vm.downloadAble = false;
+					} else {
+						vm.downloadAble = true;
+					}
 					vm.tableData = res.data;
 				},
 				fail(err) {
@@ -118,6 +125,32 @@ export default {
 			],
 
 			dataColumns: [],
+			specialColumn: [{
+			    "title": "序号",
+			    "type": "index",
+			    "align": "left"
+			}, {
+			    "title": "采集来源",
+			    "key": "采集来源col@d5cb"
+			}, {
+			    "title": "上传时间",
+			    "key": "上传时间col@d5ca"
+			}, {
+			    "title": "md5",
+			    "key": "md5col@d5c8"
+			}, {
+			    "title": "类型",
+			    "key": "类型col@d5c7"
+			}, {
+			    "title": "大小",
+			    "key": "大小col@d5c6"
+			}, {
+			    "title": "文件名",
+			    "key": "文件名col@d5c5"
+			}, {
+			    "title": "url",
+			    "key": "urlcol@d5c9"
+			}],
 			dataTable: {},
 			count: 10,
 
@@ -165,21 +198,58 @@ export default {
 			offset: 1,
 			limit: 10,
 
-			btnList: {},
 			btnType: [
 				{
 					name: 'Excelzippath',
-					type: 'primary'
+					type: 'primary',
+					str: 'excel'
 				},
 				{
 					name: 'Jsonzippath',
-					type: 'success'
+					type: 'success',
+					str: 'json'
 				},
 				{
 					name: 'Xmlzippath',
-					type: 'warning'
+					type: 'warning',
+					str: 'xml'
 				}
-			]
+			],
+
+			downloadAble: null,
+
+			pageTable: [],
+
+			pagetab: [
+				{
+					title: '序号',
+					key: 'datapage'
+				},
+				{
+					title: '条目',
+					key: 'datastr',
+					render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: 'primary',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '5px'
+                                },
+                                on: {
+                                    click: () => {
+                                        this.fnGetDownloadList(params.row.datapage)
+                                    }
+                                }
+                            }, params.row.datastr)
+                        ]);
+                    }
+				}
+			],
+
+			classes: null
 		}
 	},
 
@@ -209,8 +279,6 @@ export default {
 			this.tabIndex = index;
 			if(index == 2) {
 				this.dataScan();
-			} else if(index == 3) {
-				this.checkDownload()
 			}
 		},
 
@@ -397,12 +465,32 @@ export default {
 
 					$.each(res.rows, function(index, value) {
 						const tabName = value.col_name;
-						_this.dataColumns.push({
-							title: value.col_chinese,
-							key: value.col_name
-						});
-					});
+						if(tabName.indexOf('url') >= 0) {
+							_this.dataColumns.push({
+								title: value.col_chinese,
+								key: value.col_name,
+		                        render: (h, params) => {
+		                            return h('div', [
+		                                h('a', {
+											props: {
+		                                        href: params.row['urlcol@d5c9']
+		                                    }, on: {
+		                                        click: () => {
+													window.open(params.row['urlcol@d5c9']);
+		                                        }
+		                                    }
+										}, params.row['urlcol@d5c9'])
+		                            ]);
+		                        }
+							});
+						} else {
+							_this.dataColumns.push({
+								title: value.col_chinese,
+								key: value.col_name
+							});
+						}
 
+					});
 					_this.fetchSecondData();
 				}
 			});
@@ -439,16 +527,42 @@ export default {
 			this.dataScan();
 		},
 
-		checkDownload() {
+		checkDownload(type) {
 			const _this = this;
+			this.classes = type;
+
 			$.ajax({
-				url: `${$apis.url}/DataService/kway/details/download`,
-				type: 'POST',
-				contentType: 'application/json',
-				data: JSON.stringify({table_id: _this.table_id}),
+				url: `${$apis.url}/DataService/kway/data/metadataquerydown`,
+				type: 'GET',
+				data: {
+					table_id: _this.table_id
+				},
 				success(res) {
 					console.log(res);
-					_this.btnList = res;
+					_this.pageTable = res.data;
+				},
+				fail(err) {
+					console.log(err);
+				}
+			})
+		},
+
+		fnGetDownloadList(page) {
+			const _this = this;
+			$.ajax({
+				url: `${$apis.url}/DataService/web/fileOut/${_this.classes}`,
+				data: {
+					table_id: _this.table_id,
+					page,
+					orgId: _this.userinfo.orgId,
+					pageSize: 5000
+				},
+				success(res) {
+					if(res) {
+						window.open(res.data);
+					} else {
+						alert('参数错误');
+					}
 				}
 			})
 		}

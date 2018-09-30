@@ -184,7 +184,7 @@ export default {
 		if(userinfo) {
 			this.$Notice.success({
                 title: '提示',
-                desc: '检测到您近期有登录记录，已为您自动登录',
+                desc: '已为您自动登录',
 				durning: 5000
             });
 		}
