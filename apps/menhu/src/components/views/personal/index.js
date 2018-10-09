@@ -4,6 +4,27 @@ import $apis from '../$apiconfigs';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
+	beforeRouteEnter(to, from, next) {
+		next(vm => {
+			const routeName = vm.$route.name;
+			let navIndex = null;
+
+			switch (routeName) {
+				case 'password':
+					navIndex = 0;
+					break;
+				case 'subscribe':
+					navIndex = 1;
+					break;
+				case 'apply':
+					navIndex = 2;
+					break;
+			}
+
+			vm.navIndex = navIndex;
+		});
+	},
+
 	data() {
 		return {
 			navList: [

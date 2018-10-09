@@ -83,7 +83,7 @@
 
 .grzx-left {
 	background: #fff;
-	width: 320px;
+	width: 280px;
 	float: left;
 }
 
@@ -146,7 +146,7 @@
 
 .grzx-right {
 	float: right;
-	width: 855px;
+	width: 900px;
 	background: #fff;
 }
 
@@ -220,7 +220,7 @@
 	color: #393a3a;
 }
 
-.anniu_box button {
+.grzx-right .anniu_box button {
 	height: 35px;
 	padding: 0 22px;
 	background: #619ebd;
@@ -313,4 +313,11 @@
     line-height: 42px;
     text-indent: 12px;
 }
-.cz{color:#3dbfdc;}
+.cz{
+	color:#3dbfdc;
+	cursor: pointer;
+}
+
+.cz:hover {
+	color:#3dbfdc;
+}

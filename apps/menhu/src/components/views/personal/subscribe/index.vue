@@ -1,78 +1,62 @@
 <template>
-<div class="grzx_box">
-	<div class="grzx-right" style="padding: 15px;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
-            <tbody>
-                <tr class="hh">
-                    <td>目录名称</td>
-                    <td>目录所属部门</td>
-                    <td>申请人</td>
-                    <td>申请人联系电话</td>
-                    <td>状态</td>
-                    <td>有效期开始</td>
-                    <td>有效期结束</td>
-                    <td>交换方式</td>
-                    <td>操作</td>
-                </tr>
-                <tr>
-                    <td>qqq</td>
-                    <td>公安局</td>
-                    <td>dd</td>
-                    <td>120</td>
-                    <td>完成</td>
-                    <td>2018.05.06</td>
-                    <td>2018.09.06</td>
-                    <td>交换方式</td>
-                    <td class="cz">[查看]</td>
-                </tr>
-                <tr>
-                    <td>qqq</td>
-                    <td>公安局</td>
-                    <td>dd</td>
-                    <td>120</td>
-                    <td>完成</td>
-                    <td>2018.05.06</td>
-                    <td>2018.09.06</td>
-                    <td>交换方式</td>
-                    <td class="cz">[查看]</td>
-                </tr>
-                <tr>
-                    <td>qqq</td>
-                    <td>公安局</td>
-                    <td>dd</td>
-                    <td>120</td>
-                    <td>完成</td>
-                    <td>2018.05.06</td>
-                    <td>2018.09.06</td>
-                    <td>交换方式</td>
-                    <td class="cz">[查看]</td>
-                </tr>
-                <tr>
-                    <td>qqq</td>
-                    <td>公安局</td>
-                    <td>dd</td>
-                    <td>120</td>
-                    <td>完成</td>
-                    <td>2018.05.06</td>
-                    <td>2018.09.06</td>
-                    <td>交换方式</td>
-                    <td class="cz">[查看]</td>
-                </tr>
-                <tr>
-                    <td>qqq</td>
-                    <td>公安局</td>
-                    <td>dd</td>
-                    <td>120</td>
-                    <td>完成</td>
-                    <td>2018.05.06</td>
-                    <td>2018.09.06</td>
-                    <td>交换方式</td>
-                    <td class="cz">[查看]</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+	<div class="grzx-right">
+		<div class="grzx-title">
+
+			【共<span>{{ rightData.table_num }}</span>个采集数据】
+
+		</div>
+		<div class="grzx-box-list" v-for="(item, index) in rightData.table">
+
+			<div class="name">
+				<router-link :to="{ name: 'dataDetails', query: { table_id: item.table_id }}">
+					{{ item.subject_base_name }}
+				</router-link> &nbsp;&nbsp;
+
+			</div>
+			<div class="gxsj" style="width: 100%;">
+				更新时间：<span>{{ item.updateDateStr }}</span> 上次预览时间：
+				<span>{{ item.last_date_time }}</span>更新条数：
+				<span>{{ item.ts_num }}条</span>
+			</div>
+			<div class="gxsj" style="width: 100%; max-width: 830px;">
+				数据领域：
+				<span>{{ item.sjly }} </span>
+			</div>
+			<div class="anniu_box">
+				<button @click="handleCancel(item.metadata_subscription_id, index)">取消订阅</button>
+
+			</div>
+
+		</div>
+
+		<div class="grzx-box-list">
+
+			<div class="name">
+				<a target="_blank" href="javascript:">统计年限</a>&nbsp;&nbsp;
+
+			</div>
+			<div class="gxsj" style="width: 100%;">
+				更新时间：<span>2018-04-11</span> 上次预览时间：
+				<span>2018-04-11</span>更新条数：
+				<span>0条</span>
+			</div>
+			<div class="gxsj" style="width: 100%; max-width: 830px;">
+				数据领域：
+				<span>安全生产 </span>
+			</div>
+			<div class="anniu_box">
+				<button>取消订阅</button>
+			</div>
+
+		</div>
+		<div class="page" style="padding:62px 0;">
+			<Page :total="parseInt(rightData.table_num)"
+			show-sizer
+			:page-size-opts="[5, 10, 20]"
+			@on-page-size-change="changeSize"
+			@on-change="changePage" />
+		</div>
+	</div>
 </template>
 
 <script src="./index.js"></script>

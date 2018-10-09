@@ -6,7 +6,6 @@
 		<div class="liebiao_box" v-show="!loading">
 			<div class="t1-sub-left">
 				<ul class="tag2">
-					<div class="tag2-zk"></div>
 					<li :class="{selectTag: index == fl}" v-for="(item, index) in tabList">
 						<a @click="changeTab(index)" href="javascript:">{{ item.name }}</a>
 					</li>

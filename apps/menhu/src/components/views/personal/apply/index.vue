@@ -1,57 +1,120 @@
 <template>
-	<div class="grzx-right">
-		<div class="grzx-title">
-
-			【共<span>237</span>个采集数据】
-
+<div class="grzx_box">
+	<div class="grzx-right" style="padding: 15px;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
+            <tbody>
+                <tr class="hh">
+                    <td>目录名称</td>
+                    <td>目录所属部门</td>
+                    <td>申请人</td>
+                    <td>申请人联系电话</td>
+                    <td>状态</td>
+                    <td>有效期开始</td>
+                    <td>有效期结束</td>
+                    <td>交换方式</td>
+                    <td>操作</td>
+                </tr>
+				<tr v-for="(item, index) in rightData.rows">
+					<td>{{ item.table_name }}</td>
+					<td>{{ item.table_orgname }}</td>
+					<td>{{ item.contacts_name }}</td>
+					<td>{{ item.contacts_tel }}</td>
+					<td>{{ formatData(item.sts) }}</td>
+					<td>{{ item.request_sdateStr }}</td>
+					<td>{{ item.request_edateStr }}</td>
+					<td>{{ item.kv_name }}</td>
+					<td><a class="cz" href="javascript:" @click="handleCheck(item.data_request_id)">[查看]</a></td>
+				</tr>
+            </tbody>
+        </table>
+		<div class="page">
+			<Page :total="parseInt(rightData.total)"
+			show-sizer
+			:page-size-opts="[5, 10, 20]"
+			@on-page-size-change="changeSize"
+			@on-change="changePage" />
 		</div>
-		<div class="grzx-box-list">
-
-			<div class="name">
-				<a target="_blank" href="javascript:">统计年限</a>&nbsp;&nbsp;
-
-			</div>
-			<div class="gxsj" style="width: 100%;">
-				更新时间：<span>2018-04-11</span> 上次预览时间：
-				<span>2018-04-11</span>更新条数：
-				<span>0条</span>
-			</div>
-			<div class="gxsj" style="width: 100%; max-width: 830px;">
-				数据领域：
-				<span>安全生产 </span>
-			</div>
-			<div class="anniu_box">
-				<button>取消订阅</button>
-
-			</div>
-
-		</div>
-
-		<div class="grzx-box-list">
-
-			<div class="name">
-				<a target="_blank" href="javascript:">统计年限</a>&nbsp;&nbsp;
-
-			</div>
-			<div class="gxsj" style="width: 100%;">
-				更新时间：<span>2018-04-11</span> 上次预览时间：
-				<span>2018-04-11</span>更新条数：
-				<span>0条</span>
-			</div>
-			<div class="gxsj" style="width: 100%; max-width: 830px;">
-				数据领域：
-				<span>安全生产 </span>
-			</div>
-			<div class="anniu_box">
-				<button>取消订阅</button>
-
-			</div>
-
-		</div>
-		<div class="page" style="padding:62px 0;">
-
-		</div>
-	</div>
+    </div>
+	<Modal
+		v-model="showModel"
+		ref="model"
+		width="700"
+		:closable="false"
+		:mask-closable="false"
+		:loading="true"
+		class-name="vertical-center-modal"
+		title="申请"
+		ok-text="提交"
+		cancel-text="取消"
+		@on-ok="handleSubmit('formItem', 2)">
+		<Form
+			ref="formItem"
+			:model="formItem"
+			:rules="ruleValidate"
+			:label-width="80">
+			<Row>
+				<Col span="12">
+					<FormItem label="开始时间" prop="request_sdate">
+						<DatePicker
+							type="date"
+							placeholder="选择开始时间"
+							style="width:254px"
+							v-model="formItem.request_sdateStr">
+						</DatePicker>
+					</FormItem>
+				</Col>
+				<Col span="12">
+					<FormItem label="结束时间" prop="request_edate">
+						<DatePicker
+							type="date"
+							placeholder="选择结束时间"
+							style="width:254px"
+							v-model="formItem.request_edateStr">
+						</DatePicker>
+					</FormItem>
+				</Col>
+			</Row>
+			<Row>
+				<Col span="12">
+					<FormItem label="联系人" prop="contacts_name">
+						<Input
+							v-model="formItem.contacts_name"
+							placeholder="输入联系人姓名"></Input>
+					</FormItem>
+				</Col>
+				<Col span="12">
+					<FormItem label="联系电话" prop="contacts_tel">
+						<Input
+						v-model="formItem.contacts_tel"
+						placeholder="输入联系电话"></Input>
+					</FormItem>
+				</Col>
+			</Row>
+			<FormItem label="上传附件">
+				<Input v-model="formItem.file_path" style="width: 250px" disabled placeholder="文件路径" />
+				<div class="upload_box">
+					<Upload
+						ref="uploadFiles"
+						action="http://10.64.5.140:8888/DataService/kway/data/Applyupload"
+						:on-success="fnUploadSuccess">
+						<Button type="primary">上传附件</Button>
+					</Upload>
+				</div>
+			</FormItem>
+			<FormItem label="交换方式" prop="exchange_type">
+				<RadioGroup v-model="formItem.exchange_type">
+					<Radio :label="item.id" v-for="item in exchangeList">{{ item.remarks }}</Radio>
+				</RadioGroup>
+			</FormItem>
+			<FormItem label="申请用途" prop="request_purpose">
+				<Input v-model="formItem.request_purpose" type="textarea" :autosize="{minRows: 3}"></Input>
+			</FormItem>
+			<FormItem>
+				<Button type="info" @click="handleSubmit('formItem', 1)">保存到草稿</Button>
+			</FormItem>
+		</Form>
+	</Modal>
+</div>
 </template>
 
 <script src="./index.js"></script>
