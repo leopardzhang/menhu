@@ -125,6 +125,14 @@ const router = new VueRouter({
 	            }, 'static/views/personal/subscribe/index');
 	        }
 	    }]
+	}, {
+		path: '/about',
+		name: 'about',
+		component(resolve) {
+			require.ensure(['../../views/about/index.vue'], () => {
+				resolve(require('../../views/about/index.vue'));
+			}, 'static/views/about/index');
+		}
 	}]
 });
 

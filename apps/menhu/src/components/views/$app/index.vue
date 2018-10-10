@@ -113,7 +113,7 @@
             <router-view></router-view>
         </div>
 	    <footer class="footer">
-	        <div class="t4_tmenus">
+	        <!-- <div class="t4_tmenus">
 	            <div class="t4_w">
 	                <ul>
 	                    <li><img src="./images/sg.png" /></li>
@@ -126,13 +126,13 @@
 	                    </li>
 	                    <li><img src="./images/sg.png" /></li>
 	                    <li>
-	                        <a href="javascript:">关于我们</a>
+							<router-link :to="{ name: 'about'}">关于我们</router-link>
 	                    </li>
 	                    <li><img src="./images/sg.png" /></li>
 	                    <div class="clear"></div>
 	                </ul>
 	            </div>
-	        </div>
+	        </div> -->
 	        <div class="content">
 	            <p>
 	                Copyright © 2014-2017 www.gyopendata.gov.cn All Rights Reserved<br>黑ICP备16010582号 网站访问量：<br>主办单位：佳木斯市大数据发展管理委员会 建设单位：佳木斯市信息产业发展中心<br>(建议使用Chrome、360浏览器(极速模式)，1366*768以上分辨率浏览本站)

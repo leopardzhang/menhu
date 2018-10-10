@@ -197,8 +197,11 @@ export default {
 				},
 				success(res) {
 					console.log(res[0]);
+					const temp = res[0];
+
+					temp.exchange_type = parseInt(temp.exchange_type);
 					_this.showModel = true;
-					_this.formItem = $.extend({}, res[0]);
+					_this.formItem = $.extend({}, temp);
 				}
 			});
 		},

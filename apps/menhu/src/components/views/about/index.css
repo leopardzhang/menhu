@@ -1,0 +1,130 @@
+/*footer新增开始*/
+.t4_tmenus {
+    height: 47px;
+    line-height: 47px;
+    background: #34373a;
+    border-bottom: 1px solid #2c2d2d; margin-bottom: 25px;
+}
+.t4_w {
+    width: 1200px;
+    margin: 0 auto;
+}
+.t4_tmenus ul {
+    width: 70%;
+    margin: 0 auto;
+
+}
+.t4_tmenus ul li {
+    text-align: center;
+    float: left;
+    width: 14.2%;
+     color: #73d6dc;
+}
+.t4_tmenus ul li a {
+    display: block;
+    color: #73d6dc;
+}
+.t4_tmenus ul li a:hover{ color:#fff;}
+
+/*footer新增结束*/
+
+.mian {
+	width: 1200px;
+	margin: 0 auto;
+	background: #fbfbfb;
+	padding-top: 45px;
+	margin-top: 25px;
+	padding-bottom: 25px; margin-bottom: 25px;
+}
+
+
+/*关于我们开始*/
+
+.t4_service {
+	width: 1155px;
+	margin: 0 auto;
+	border: 1px solid #d9e2f0;
+	background: #fff;
+	position: relative;
+}
+
+.t4_service_tit {
+	width: 250px;
+	text-align: center;
+	font-size: 20px;
+	color: #45668f;
+	font-weight: bold;
+	background: #fff;
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	margin-left: -125px;
+	border: 1px solid #d9e2f0;
+	border-bottom: none;
+	line-height: 47px;
+}
+
+.t4_service_tit i {
+	width: 5px;
+	height: 5px;
+	background: #b1c5e4;
+	display: inline-block;
+	position: absolute;
+}
+
+.t4_service_tit .t4_ser_l {
+	left: -3px;
+	top: 42px;
+}
+
+.t4_service_tit .t4_ser_r {
+	right: -3px;
+	top: 42px;
+}
+
+.t4_service_cons {
+	padding: 40px 18px;
+}
+
+.t4_service_cons p {
+	text-indent: 33px;
+	font-size: 16px;
+	color: #5d7a9e;
+	line-height: 42px;
+}
+
+
+/*服务条款开始*/
+
+.t4_service_cons p {
+	text-indent: 33px;
+	font-size: 16px;
+	color: #5d7a9e;
+	line-height: 42px;
+}
+
+.t4_service_cons .t4_sbold {
+	font-weight: bold;
+	font-size: 16px;
+	color: #2b72c3;
+	padding: 0 10px 0 0;
+}
+
+.t4_service_cons p.t4_sbold {
+	text-align: center;
+}
+
+
+/*友情链接开始*/
+
+.t4_service_cons li {
+	float: left;
+	padding: 5px 30px;
+}
+
+.t4_service_cons li a {
+	color: #7e94b1;
+	font-size: 16px;
+}
+.t4_service_cons li a:hover{ color: #277ba0;
+    text-decoration: underline;}
