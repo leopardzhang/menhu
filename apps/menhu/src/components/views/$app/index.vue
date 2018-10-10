@@ -12,7 +12,7 @@
 		                <div class="login_box fr">
 		                    <a v-if="!userinfo" @click="loginShow" href="javascript:" class="login" id="login_btn">[ 登录 ]</a>
 							<a v-if="userinfo" class="welcome">欢迎您！{{ userinfo.realName }}</a>
-							<router-link :to="{ name: 'password' }" class="login">[ 个人中心 ]</router-link>
+							<router-link v-if="!!userinfo" :to="{ name: 'password' }" class="login">[ 个人中心 ]</router-link>
 							<a v-if="!!userinfo" @click="exit" href="javascript:" class="login">[ 退出 ]</a>
 		                </div>
 		            </div>

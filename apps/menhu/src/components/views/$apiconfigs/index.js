@@ -6,6 +6,6 @@ export default {
 }
 
 // export default {
-// 	url: 'http://192.199.72.26:8099',
+// 	url: 'http://10.64.42.66:8090',
 // 	imgBaseUrl: 'http://10.64.42.65:8090/'
 // }

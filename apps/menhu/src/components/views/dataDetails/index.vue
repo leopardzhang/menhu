@@ -140,7 +140,7 @@
                                     <Table border stripe :columns="columns" :data="tableData.cols"></Table>
 								</div>
 							</div>
-							<div class="detail-base-list" v-if="!loading && tabIndex == 2">
+							<div class="detail-base-list" v-if="!loading && tabIndex == 2 && userId">
 								<div style="font-size: 14px;font-weight: 600;line-height: 30px;color: #1b84a2;">
                                     <i class="iconfont"></i>资源数据查询
                                 </div>
@@ -154,7 +154,7 @@
 									</Table>
 								</div>
 							</div>
-							<div class="detail-base-list" v-if="!loading && tabIndex == 3">
+							<div class="detail-base-list" v-if="!loading && tabIndex == 3 && userId">
 								<ButtonGroup size="large">
 									<Button
 										v-for="item in btnType"

@@ -2,20 +2,6 @@
 <div class="background">
 	<div class="grzx_box">
 	    <div class="grzx-left">
-	        <div class="t1-sousuo">
-	            <div class="ss-box-srk">
-	                <input
-						id="searchContent"
-						v-model="dataResourceName"
-						placeholder="请输入数据、应用、移动应用名称关键字"
-						@input="fnSearch">
-	            </div>
-	            <div class="ss-box-img">
-	            	<a href="#">
-						<img src="./images/ss.png"/>
-					</a>
-	        	</div>
-	        </div>
 	        <div class="grzx-left_title">
 	            数据分类
 	        </div>
@@ -57,7 +43,7 @@
 	        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
 	            <tbody>
 	                <tr>
-	                    <td colspan="4" class="ta">培训课件</td>
+	                    <td colspan="4" class="ta">{{ navList[navIndex].name }}</td>
 	                </tr>
 	                <tr v-for="(item, index) in rightData.dataList">
 	                    <td>{{ index + 1 + ((page-1) * count) }}</td>

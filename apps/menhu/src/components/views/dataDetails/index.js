@@ -11,13 +11,14 @@ export default {
 			vm.table_id = vm.$route.query.table_id;
 
 			const table_id = vm.$route.query.table_id;
+			vm.userId = vm.userinfo ? vm.userinfo.userId : null;
 
 			$.ajax({
 				url: `${$apis.url}/DataService/kway/data/details`,
 				type: 'GET',
 				data: {
 					table_id,
-					userid: vm.userinfo.userId
+					userid: vm.userId
 				},
 				success(res) {
 					const type = res.data.dataList.data_type;
@@ -85,6 +86,7 @@ export default {
 		};
 
 		return {
+			userId: null,
 			loading: true,
 			table_id: '',
 			tableData: null,
@@ -276,9 +278,13 @@ export default {
 
 	methods: {
 		changeTab(index) {
-			this.tabIndex = index;
-			if(index == 2) {
+			if(index >= 2 && !this.userId) {
+				this.$Message.warning('该功能登录后方可查看');
+			} else if(index == 2) {
 				this.dataScan();
+				this.tabIndex = index;
+			} else {
+				this.tabIndex = index;
 			}
 		},
 
@@ -288,7 +294,7 @@ export default {
 		handleClick() {
 			const table_id = this.tableData.dataList.table_id;
 			const metadata_subscription_id = this.tableData.dataList.dy_id;
-			const user_id = this.userinfo.userId;
+			const user_id = this.userId;
 			const data = {
 				table_id,
 				user_id,
@@ -361,7 +367,7 @@ export default {
 				type: 'GET',
 				data: {
 					table_id,
-					userid: _this.userinfo.userId
+					userid: _this.userId
 				},
 				success(res) {
 					_this.tableData = res.data;
@@ -439,7 +445,7 @@ export default {
                 request_edate: '',
                 request_purpose: '',
 				file_path: '',
-				cuserid: _this.userinfo.userId,
+				cuserid: _this.userId,
 				request_orgId: _this.userinfo.orgId,
             });
 		},
@@ -509,7 +515,7 @@ export default {
 					orgid: _this.tableData.dataList.org_id,
 					offset: _this.offset,
 					limit: _this.limit,
-					userId: _this.userinfo.userId
+					userId: _this.userId
 				},
 				success(res) {
 					_this.dataTable = res;
@@ -565,6 +571,19 @@ export default {
 					}
 				}
 			})
+		}
+	},
+
+	watch: {
+		userinfo(data) {
+			if(data) {
+				this.userId = data.userId;
+			} else {
+				this.userId = null;
+				if(this.tabIndex >= 2) {
+					this.tabIndex = 0;
+				}
+			}
 		}
 	}
 }

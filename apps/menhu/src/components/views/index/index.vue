@@ -81,7 +81,7 @@
                         </li>
                         <li>
                             <ul class="news_item_list">
-                                <li v-for="item in indexData.recodata">
+                                <li v-for="item in indexData.update_date">
                                     <span>[{{ item.visitnum_sum }}]</span>
 									<router-link :to="{ name: 'dataDetails', query: { table_id: item.table_id }}">
 										{{ item.subject_base_name }}
@@ -94,7 +94,7 @@
                         </li>
                         <li>
                             <ul class="news_item_list">
-                                <li v-for="item in indexData.update_date">
+                                <li v-for="item in indexData.recodata">
                                     <span>[{{ item.datanum_sum }}]</span>
 									<router-link :to="{ name: 'dataDetails', query: { table_id: item.table_id }}">
 										{{ item.subject_base_name }}
