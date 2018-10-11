@@ -75,9 +75,9 @@
 									</router-link>
                                 </li>
                             </ul>
-                            <a href="javascript:" class="more">
+                            <!-- <a href="javascript:" class="more">
 								更多
-							</a>
+							</a> -->
                         </li>
                         <li>
                             <ul class="news_item_list">
@@ -88,9 +88,9 @@
 									</router-link>
                                 </li>
                             </ul>
-                            <a href="javascript:" class="more">
+                            <!-- <a href="javascript:" class="more">
 								更多
-							</a>
+							</a> -->
                         </li>
                         <li>
                             <ul class="news_item_list">
@@ -101,9 +101,9 @@
 									</router-link>
                                 </li>
                             </ul>
-                            <a href="javascript:" class="more">
+                            <!-- <a href="javascript:" class="more">
 								更多
-							</a>
+							</a> -->
                         </li>
                     </ul>
                 </div>

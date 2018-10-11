@@ -170,6 +170,7 @@ export default {
 
 	created() {
 		const _this = this;
+		const params = this.$route.query;
 
 		$.ajax({
 			url: `${$apis.url}/DataService/kway/data/sjdetail_type`,
@@ -185,6 +186,11 @@ export default {
 				_this.tableData[0] = _this.tableShowData = tableType;
 				_this.tableData[1] = tableOrg;
 				_this.tableData[2] = tableJc;
+				if(params.table_type_sid) {
+					_this.changeTab(0);
+				} else if (params.table_type_branchid) {
+					_this.changeTab(1);
+				}
 				_this.getRightListData().then((res) => {
 					_this.loading = false;
 					_this.rightData = res.data;
@@ -323,21 +329,23 @@ export default {
 		 * 订阅/取消订阅
 		 */
 		handleClick(id, type, index) {
-			const table_id = id;
-			const metadata_subscription_id = id;
-			const user_id = this.userinfo.userId;
-			const data = {
-				table_id,
-				user_id,
-				metadata_subscription_id
-			}
-			if(type) {
-				this.subscribe(data, index);
+			if(this.userinfo) {
+				const table_id = id;
+				const metadata_subscription_id = id;
+				const user_id = this.userinfo.userId;
+				const data = {
+					table_id,
+					user_id,
+					metadata_subscription_id
+				}
+				if(type) {
+					this.subscribe(data, index);
+				} else {
+					this.dissubscribe(data, index);
+				}
 			} else {
-				this.dissubscribe(data, index);
+				this.$Message.warning('请先登录后再进行此操作');
 			}
-
-
 		},
 
 		/**
@@ -444,25 +452,32 @@ export default {
 			this.formItem.file_path = res.data;
 		},
 
+		/**
+		 * 申请
+		 */
 		handelApply(table_id, table_name, table_orgid) {
 			const _this = this;
 
-			this.$refs['uploadFiles'].clearFiles();
-			this.showModel = true;
-			this.formItem = $.extend({}, {
-				table_id,
-				table_name,
-				table_orgid,
-                contacts_name: '',
-				contacts_tel: '',
-                exchange_type: 'male',
-                request_sdate: '',
-                request_edate: '',
-                request_purpose: '',
-				file_path: '',
-				cuserid: _this.userinfo.userId,
-				request_orgId: _this.userinfo.orgId,
-            });
+			if(this.userinfo) {
+				this.$refs['uploadFiles'].clearFiles();
+				this.showModel = true;
+				this.formItem = $.extend({}, {
+					table_id,
+					table_name,
+					table_orgid,
+	                contacts_name: '',
+					contacts_tel: '',
+	                exchange_type: 'male',
+	                request_sdate: '',
+	                request_edate: '',
+	                request_purpose: '',
+					file_path: '',
+					cuserid: _this.userinfo.userId,
+					request_orgId: _this.userinfo.orgId,
+	            });
+			} else {
+				this.$Message.warning('请先登录后再进行此操作');
+			}
 		}
 	}
 }

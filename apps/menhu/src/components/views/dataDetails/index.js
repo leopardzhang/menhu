@@ -202,17 +202,17 @@ export default {
 
 			btnType: [
 				{
-					name: 'Excelzippath',
+					name: 'Excel下载',
 					type: 'primary',
 					str: 'excel'
 				},
 				{
-					name: 'Jsonzippath',
+					name: 'Json下载',
 					type: 'success',
 					str: 'json'
 				},
 				{
-					name: 'Xmlzippath',
+					name: 'Xml下载',
 					type: 'warning',
 					str: 'xml'
 				}
@@ -280,10 +280,12 @@ export default {
 		changeTab(index) {
 			if(index >= 2 && !this.userId) {
 				this.$Message.warning('该功能登录后方可查看');
-			} else if(index == 2) {
-				this.dataScan();
-				this.tabIndex = index;
 			} else {
+				this.tabIndex = index;
+			}
+
+			if(index == 2 && this.userId) {
+				this.dataScan();
 				this.tabIndex = index;
 			}
 		},
@@ -468,24 +470,24 @@ export default {
 						type: 'index',
 						align: 'left'
 					}];
-
-					$.each(res.rows, function(index, value) {
+					$.each(res[0].rows, function(index, value) {
 						const tabName = value.col_name;
 						if(tabName.indexOf('url') >= 0) {
 							_this.dataColumns.push({
 								title: value.col_chinese,
 								key: value.col_name,
 		                        render: (h, params) => {
+									console.log(params);
 		                            return h('div', [
 		                                h('a', {
 											props: {
-		                                        href: params.row['urlcol@d5c9']
+		                                        href: params.row[tabName]
 		                                    }, on: {
 		                                        click: () => {
-													window.open(params.row['urlcol@d5c9']);
+													window.open(params.row[tabName]);
 		                                        }
 		                                    }
-										}, params.row['urlcol@d5c9'])
+										}, '点击下载')
 		                            ]);
 		                        }
 							});
@@ -544,7 +546,6 @@ export default {
 					table_id: _this.table_id
 				},
 				success(res) {
-					console.log(res);
 					_this.pageTable = res.data;
 				},
 				fail(err) {

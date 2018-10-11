@@ -39,9 +39,9 @@
 							<li v-for="item in tableShowData">
 								<a
 									href="javascript:"
-									:data-id="item.table_type_id"
+									:data-id="item.table_type_id || item.table_type_branchid"
 									@click="changeFlClass">
-									<img v-if="fl == 0" src="./images/pic.png" width="16" height="19"/>
+									<img v-if="fl == 0" :src="imgBaseUrl+'/upload'+item.imgurl" width="16" height="19"/>
 									{{ item.name }}
 								</a>
 							</li>

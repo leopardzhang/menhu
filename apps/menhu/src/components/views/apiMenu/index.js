@@ -5,6 +5,7 @@ import $apis from '../$apiconfigs';
 export default {
 	data() {
 		return {
+			imgBaseUrl: $apis.imgBaseUrl,
 			loading: true,
 			loadingRight: false,
 
@@ -128,6 +129,7 @@ export default {
 					this.table_type_id = id;
 					break;
 			}
+			console.log(this.table_type_branchid);
 
 			this.getRightListData().then((res) => {
 				this.rightData = res.data;

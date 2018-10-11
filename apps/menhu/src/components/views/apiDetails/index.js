@@ -8,7 +8,8 @@ export default {
 		next(vm => {
 			const params = vm.$route.query;
 			const tableId = params.tableId;
-			const orgId = vm.userinfo.orgId || null;
+			const orgId = vm.userinfo ? vm.userinfo.orgId : null;
+
 			$.ajax({
 				url: `${$apis.url}/DataService/kway/data/apiQueryInfo`,
 				type: 'GET',
