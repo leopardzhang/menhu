@@ -23,7 +23,7 @@
 					<td>{{ item.request_sdateStr }}</td>
 					<td>{{ item.request_edateStr }}</td>
 					<td>{{ item.kv_name }}</td>
-					<td><a class="cz" href="javascript:" @click="handleCheck(item.data_request_id)">[查看]</a></td>
+					<td><a class="cz" href="javascript:" @click="handleCheck(item.table_id, item.data_request_id)">[查看]</a></td>
 				</tr>
             </tbody>
         </table>
@@ -113,6 +113,7 @@
 				<Button type="info" @click="handleSubmit('formItem', 1)">保存到草稿</Button>
 			</FormItem>
 		</Form>
+		<Table v-if="tabData.length" stripe :columns="column" :data="tabData"></Table>
 	</Modal>
 </div>
 </template>

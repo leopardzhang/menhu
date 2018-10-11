@@ -174,6 +174,7 @@
 					<Button type="info" @click="handleSubmit('formItem', 1)">保存到草稿</Button>
 				</FormItem>
 		    </Form>
+			<Table v-if="tabData.length" stripe :columns="column" :data="tabData"></Table>
 		</Modal>
 	</div>
 </template>

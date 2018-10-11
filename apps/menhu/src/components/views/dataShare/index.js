@@ -30,7 +30,8 @@ export default {
 
 			downloadBaseUrl: null,
 
-			baseUrl: $apis.url
+			baseUrl: $apis.url,
+			tagName: '目录采集'
 		}
 	},
 
@@ -115,6 +116,7 @@ export default {
 		changeNavIndex(index) {		//上面的
 			this.navIndex = index;
 			this.navChose = 0;
+			this.tagName = this.navList[this.navIndex].name;
 
 			this.getRightListData().then((res) => {
 				this.rightData = res.data;
@@ -124,6 +126,7 @@ export default {
 		changeDataIndex(index) {	//下面的（登录才能看见）
 			this.dataIndex = index
 			this.navChose = 1;
+			this.tagName = this.navList[this.dataIndex].name;
 
 			this.getRightListData().then((res) => {
 				this.rightData = res.data;

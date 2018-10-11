@@ -113,7 +113,30 @@ export default {
 				]
 			},
 
-			exchangeList: []
+			exchangeList: [],
+			column: [
+                {
+                    title: '信息项中文名',
+                    key: 'col_chinese'
+                },
+                {
+                    title: '信息项代码',
+                    key: 'col_code'
+                },
+                {
+                    title: '数据类型',
+                    key: 'field_type_name'
+                },
+                {
+                    title: '是否向社会开放',
+                    key: 'public_type_String'
+                },
+                {
+                    title: '共享类型',
+                    key: 'share_type_String'
+                }
+            ],
+			tabData: []
 		}
 	},
 
@@ -187,16 +210,28 @@ export default {
 			return response;
 		},
 
-		handleCheck(data_request_id) {
+		handleCheck(table_id, data_request_id) {
 			const _this = this;
+
+			$.ajax({
+				url: `${$apis.url}/DataService/kway/data/metadataColsQequest`,
+				type: 'GET',
+				data: {
+					table_id
+				},
+				success(res) {
+					_this.tabData = res.rows;
+				}
+			});
+
 			$.ajax({
 				url: `${$apis.url}/DataService/kway/data/getDataRequestById2`,
 				type: 'GET',
 				data: {
-					data_request_id
+					data_request_id,
+					orgId: _this.userinfo.orgId
 				},
 				success(res) {
-					console.log(res[0]);
 					const temp = res[0];
 
 					temp.exchange_type = parseInt(temp.exchange_type);

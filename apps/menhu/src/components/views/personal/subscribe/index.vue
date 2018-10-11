@@ -11,7 +11,6 @@
 				<router-link :to="{ name: 'dataDetails', query: { table_id: item.table_id }}">
 					{{ item.subject_base_name }}
 				</router-link> &nbsp;&nbsp;
-
 			</div>
 			<div class="gxsj" style="width: 100%;">
 				更新时间：<span>{{ item.updateDateStr }}</span> 上次预览时间：
@@ -24,30 +23,7 @@
 			</div>
 			<div class="anniu_box">
 				<button @click="handleCancel(item.metadata_subscription_id, index)">取消订阅</button>
-
 			</div>
-
-		</div>
-
-		<div class="grzx-box-list">
-
-			<div class="name">
-				<a target="_blank" href="javascript:">统计年限</a>&nbsp;&nbsp;
-
-			</div>
-			<div class="gxsj" style="width: 100%;">
-				更新时间：<span>2018-04-11</span> 上次预览时间：
-				<span>2018-04-11</span>更新条数：
-				<span>0条</span>
-			</div>
-			<div class="gxsj" style="width: 100%; max-width: 830px;">
-				数据领域：
-				<span>安全生产 </span>
-			</div>
-			<div class="anniu_box">
-				<button>取消订阅</button>
-			</div>
-
 		</div>
 		<div class="page" style="padding:62px 0;">
 			<Page :total="parseInt(rightData.table_num)"

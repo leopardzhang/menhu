@@ -80,12 +80,12 @@ const router = new VueRouter({
             }, 'static/views/dataShare/index');
         }
 	}, {
-		path: '/search',
-        name: 'search',
+		path: '/loading',
+        name: 'loading',
         component(resolve) {
-            require.ensure(['../../views/search/index.vue'], () => {
-                resolve(require('../../views/search/index.vue'));
-            }, 'static/views/search/index');
+            require.ensure(['../../views/loading/index.vue'], () => {
+                resolve(require('../../views/loading/index.vue'));
+            }, 'static/views/loading/index');
         }
 	}, {
 		path: '/personal',

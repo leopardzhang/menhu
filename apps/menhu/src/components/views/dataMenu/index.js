@@ -143,7 +143,31 @@ export default {
 
 			exchangeList: [],
 
-			baseUrl: $apis
+			baseUrl: $apis,
+
+			column: [
+                {
+                    title: '信息项中文名',
+                    key: 'col_chinese'
+                },
+                {
+                    title: '信息项代码',
+                    key: 'col_code'
+                },
+                {
+                    title: '数据类型',
+                    key: 'field_type_name'
+                },
+                {
+                    title: '是否向社会开放',
+                    key: 'public_type_String'
+                },
+                {
+                    title: '共享类型',
+                    key: 'share_type_String'
+                }
+            ],
+			tabData: []
 		}
 	},
 
@@ -410,8 +434,7 @@ export default {
 		handleSubmit (name, sts) {
 			const _this = this;
 
-			_this.formItem.sts = sts;
-
+			this.formItem.sts = sts;
             this.$refs[name].validate((valid) => {
                 if (valid) {
 					$.each(_this.formItem, function(index, value) {
@@ -459,6 +482,18 @@ export default {
 			const _this = this;
 
 			if(this.userinfo) {
+				$.ajax({
+					url: `${$apis.url}/DataService/kway/data/metadataColsQequest`,
+					type: 'GET',
+					data: {
+						table_id
+					},
+					success(res) {
+						_this.tabData = res.rows
+						console.log(res);
+					}
+				});
+
 				this.$refs['uploadFiles'].clearFiles();
 				this.showModel = true;
 				this.formItem = $.extend({}, {

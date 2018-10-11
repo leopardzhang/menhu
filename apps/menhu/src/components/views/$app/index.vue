@@ -101,8 +101,13 @@
 		                </div>
 		                <div class="search_box fr">
 		                    <div class="search">
-		                        <input class="text" v-model="keyword" placeholder="请输入关键字" />
-		                        <input class="btn" type="button" @click="fnSearch" />
+								<Input v-model="keyword">
+							        <Select v-model="searchType" slot="prepend" style="width: 100px">
+							            <Option value="0">数据资源</Option>
+							            <Option value="1">API服务</Option>
+							        </Select>
+							        <Button slot="append" icon="ios-search" @click="handleSearch"></Button>
+							    </Input>
 		                    </div>
 		                </div>
 		            </div>

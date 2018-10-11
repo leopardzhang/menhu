@@ -43,7 +43,7 @@
 	        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
 	            <tbody>
 	                <tr>
-	                    <td colspan="4" class="ta">{{ navList[navIndex].name }}</td>
+	                    <td colspan="4" class="ta">{{ tagName }}</td>
 	                </tr>
 	                <tr v-for="(item, index) in rightData.dataList">
 	                    <td>{{ index + 1 + ((page-1) * count) }}</td>

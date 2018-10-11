@@ -16,10 +16,9 @@
                     </div>
                 </div>
                 <div class="detail-simple-info">
-                    <div class="sj1">
+                    <div class="sj1" v-if="tableData.dataList.data_type == 12">
                         <input type="button" value="xml" class="sub-btn-xml">
                         <input type="button" value="xls" class="sub-btn-xls">
-                        <input type="button" value="json" class="sub-btn-json">
                         <input type="button" value="csv" class="sub-btn-csv">
                     </div>
                     <div class="detail-count">

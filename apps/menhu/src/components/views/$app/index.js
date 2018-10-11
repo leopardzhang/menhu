@@ -14,7 +14,8 @@ export default {
 			password: '',
 			validateCode: '',
 			currentUserId: '',
-			keyword: ''
+			keyword: '',
+			searchType: '0'
 		}
 	},
 
@@ -119,13 +120,26 @@ export default {
 			});
 		},
 
-		fnSearch() {
-			this.$router.push({
-				path: '/search',
-				query: {
-					keyword: this.keyword
-				}
+		handleSearch() {
+			const p1 = new Promise((resolve, reject) => {
+				this.$router.push({
+					path: '/loading'
+				});
+				setTimeout(() => {
+					resolve();
+				}, 10);
+			}).then(() => {
+				this.$router.push({
+					path: '/search',
+					query: {
+						keyword: this.keyword,
+						type: this.searchType
+					}
+				});
 			})
+
+
+
 		}
 	},
 	computed: {
