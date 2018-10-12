@@ -482,34 +482,38 @@ export default {
 			const _this = this;
 
 			if(this.userinfo) {
-				$.ajax({
-					url: `${$apis.url}/DataService/kway/data/metadataColsQequest`,
-					type: 'GET',
-					data: {
-						table_id
-					},
-					success(res) {
-						_this.tabData = res.rows
-						console.log(res);
-					}
-				});
+				if(table_orgid != this.userinfo.org_id) {
+					$.ajax({
+						url: `${$apis.url}/DataService/kway/data/metadataColsQequest`,
+						type: 'GET',
+						data: {
+							table_id
+						},
+						success(res) {
+							_this.tabData = res.rows
+							console.log(res);
+						}
+					});
 
-				this.$refs['uploadFiles'].clearFiles();
-				this.showModel = true;
-				this.formItem = $.extend({}, {
-					table_id,
-					table_name,
-					table_orgid,
-	                contacts_name: '',
-					contacts_tel: '',
-	                exchange_type: 'male',
-	                request_sdate: '',
-	                request_edate: '',
-	                request_purpose: '',
-					file_path: '',
-					cuserid: _this.userinfo.userId,
-					request_orgId: _this.userinfo.orgId,
-	            });
+					this.$refs['uploadFiles'].clearFiles();
+					this.showModel = true;
+					this.formItem = $.extend({}, {
+						table_id,
+						table_name,
+						table_orgid,
+		                contacts_name: '',
+						contacts_tel: '',
+		                exchange_type: 'male',
+		                request_sdate: '',
+		                request_edate: '',
+		                request_purpose: '',
+						file_path: '',
+						cuserid: _this.userinfo.userId,
+						request_orgId: _this.userinfo.orgId,
+		            });
+				} else {
+					this.$Message.warning('不可申请本部门的信息');
+				}
 			} else {
 				this.$Message.warning('请先登录后再进行此操作');
 			}

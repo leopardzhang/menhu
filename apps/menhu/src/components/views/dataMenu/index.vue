@@ -82,7 +82,10 @@
 							v-if="item.dyzt != 1">
 							订阅资源
 						</Button>
-						<Button type="primary" @click="handelApply(item.table_id, item.subject_base_name, item.org_id)">申请</Button>
+						<Button
+							type="primary"
+							@click="handelApply(item.table_id, item.subject_base_name, item.org_id)"
+							>申请</Button>
 					</div>
 
 				</div>

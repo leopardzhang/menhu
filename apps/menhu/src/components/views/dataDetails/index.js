@@ -434,22 +434,24 @@ export default {
 		handelApply(table_id, table_name, table_orgid) {
 			const _this = this;
 
-			this.$refs['uploadFiles'].clearFiles();
-			this.showModel = true;
-			this.formItem = $.extend({}, {
-				table_id,
-				table_name,
-				table_orgid,
-                contacts_name: '',
-				contacts_tel: '',
-                exchange_type: 'male',
-                request_sdate: '',
-                request_edate: '',
-                request_purpose: '',
-				file_path: '',
-				cuserid: _this.userId,
-				request_orgId: _this.userinfo.orgId,
-            });
+			if(table_orgid != this.userinfo.org_id) {
+				this.$refs['uploadFiles'].clearFiles();
+				this.showModel = true;
+				this.formItem = $.extend({}, {
+					table_id,
+					table_name,
+					table_orgid,
+	                contacts_name: '',
+					contacts_tel: '',
+	                exchange_type: 'male',
+	                request_sdate: '',
+	                request_edate: '',
+	                request_purpose: '',
+					file_path: '',
+					cuserid: _this.userId,
+					request_orgId: _this.userinfo.orgId,
+	            });
+			}
 		},
 
 		dataScan() {
