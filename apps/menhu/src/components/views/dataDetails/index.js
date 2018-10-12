@@ -435,22 +435,36 @@ export default {
 			const _this = this;
 
 			if(table_orgid != this.userinfo.org_id) {
-				this.$refs['uploadFiles'].clearFiles();
-				this.showModel = true;
-				this.formItem = $.extend({}, {
-					table_id,
-					table_name,
-					table_orgid,
-	                contacts_name: '',
-					contacts_tel: '',
-	                exchange_type: 'male',
-	                request_sdate: '',
-	                request_edate: '',
-	                request_purpose: '',
-					file_path: '',
-					cuserid: _this.userId,
-					request_orgId: _this.userinfo.orgId,
-	            });
+				$.ajax({
+					url: `${$apis.url}/DataService/kway/data/getSf`,
+					type: 'GET',
+					data: {
+						table_id,
+						cuserid: _this.userinfo.userId
+					},
+					success(res) {
+						if(res.code == 0) {
+							this.$refs['uploadFiles'].clearFiles();
+							this.showModel = true;
+							this.formItem = $.extend({}, {
+								table_id,
+								table_name,
+								table_orgid,
+				                contacts_name: '',
+								contacts_tel: '',
+				                exchange_type: 'male',
+				                request_sdate: '',
+				                request_edate: '',
+				                request_purpose: '',
+								file_path: '',
+								cuserid: _this.userId,
+								request_orgId: _this.userinfo.orgId,
+				            });
+						} else {
+							_this.$Message.warning('此信息已申请过');
+						}
+					}
+				});
 			}
 		},
 
