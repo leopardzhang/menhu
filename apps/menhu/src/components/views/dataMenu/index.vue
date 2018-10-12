@@ -159,7 +159,7 @@
 					<div class="upload_box">
 						<Upload
 							ref="uploadFiles"
-							action="http://10.64.5.140:8888/DataService/kway/data/Applyupload"
+							:action="uploadUrl+'/DataService/kway/data/Applyupload'"
 							:on-success="fnUploadSuccess">
 							<Button type="primary">上传附件</Button>
 						</Upload>

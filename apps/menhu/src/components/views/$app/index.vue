@@ -47,7 +47,7 @@
 								</router-link>
 		                    </li>
 		                    <li>
-		                        <a href="javascript:">
+		                        <a href="javascript:" @click="notShow">
 									<img src="./images/tb_09.png">
 									<span>开放指数</span>
 								</a>
@@ -59,7 +59,7 @@
 								</router-link>
 		                    </li>
 		                    <li>
-		                        <a href="javascript:">
+		                        <a href="javascript:" @click="notShow">
 									<img src="./images/tb_13.png">
 									<span>开放动态</span>
 								</a>
@@ -140,7 +140,7 @@
 	        </div> -->
 	        <div class="content">
 	            <p>
-	                Copyright © 2014-2017 www.gyopendata.gov.cn All Rights Reserved<br>黑ICP备16010582号 网站访问量：<br>主办单位：佳木斯市大数据发展管理委员会 建设单位：佳木斯市信息产业发展中心<br>(建议使用Chrome、360浏览器(极速模式)，1366*768以上分辨率浏览本站)
+	                Copyright © 2014-2017 www.gyopendata.gov.cn All Rights Reserved<br>黔ICP备16010582号 网站访问量：<br>主办单位：安顺市大数据发展管理委员会 建设单位：安顺市信息产业发展中心<br>(建议使用Chrome、360浏览器(极速模式)，1366*768以上分辨率浏览本站)
 	            </p>
 	        </div>
 	    </footer>

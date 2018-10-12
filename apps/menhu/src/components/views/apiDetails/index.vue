@@ -1,5 +1,5 @@
 <template>
-<div class="background" v-if="rightData">
+<div class="background">
     <div class="liebiao_box">
         <div class="t1-sub-paihang">
             <div class="ph_tiile">数据下载排行</div>
@@ -21,7 +21,7 @@
             <div class="t1-sub-box-nr">
 
                 <div class="name">
-                    <a>{{ rightData.subject_base_name }}</a>
+                    <a v-if="rightData">{{ rightData.subject_base_name }}</a>
                 </div>
 
                 <div style="width: 730px; margin-left: 27px;">
@@ -40,7 +40,7 @@
             </div>
             <!--表格-->
             <div class="t1-sub-box-bg">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
+                <table v-if="rightData" width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
                     <tbody>
                         <tr>
                             <td colspan="4" class="ta">功能说明</td>
@@ -157,7 +157,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
+                <table v-if="rightData.data[0]" width="100%" border="0" cellspacing="0" cellpadding="0" class="tab02">
                     <tbody>
                         <tr>
                             <td colspan="4" class="ta" style="background:#fff8ee;">返回参数</td>

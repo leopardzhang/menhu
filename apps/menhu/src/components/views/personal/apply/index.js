@@ -136,7 +136,9 @@ export default {
                     key: 'share_type_String'
                 }
             ],
-			tabData: []
+			tabData: [],
+
+			state: null
 		}
 	},
 
@@ -210,7 +212,8 @@ export default {
 			return response;
 		},
 
-		handleCheck(table_id, data_request_id) {
+		handleCheck(table_id, data_request_id, state) {
+			this.state = state;
 			const _this = this;
 
 			$.ajax({
@@ -254,7 +257,7 @@ export default {
 		handleSubmit (name, sts) {
 			const _this = this;
 
-			if(this.formItem.cuserid == this.userinfo.userId) {
+			if(this.formItem.cuserid == this.userinfo.userId || state != 2) {
 				_this.formItem.sts = sts;
 
 	            this.$refs[name].validate((valid) => {

@@ -23,7 +23,14 @@
 					<td>{{ item.request_sdateStr }}</td>
 					<td>{{ item.request_edateStr }}</td>
 					<td>{{ item.kv_name }}</td>
-					<td><a class="cz" href="javascript:" @click="handleCheck(item.table_id, item.data_request_id)">[查看]</a></td>
+					<td>
+						<a
+							class="cz"
+							href="javascript:"
+							@click="handleCheck(item.table_id, item.data_request_id, item.sts)">
+							[查看]
+						</a>
+					</td>
 				</tr>
             </tbody>
         </table>
@@ -44,7 +51,7 @@
 		:loading="true"
 		class-name="vertical-center-modal"
 		title="申请"
-		:ok-text="formItem.cuserid == userinfo.userId ? '提交' : '确认'"
+		ok-text="提交"
 		cancel-text="取消"
 		@on-ok="handleSubmit('formItem', 2)">
 		<Form
@@ -56,7 +63,7 @@
 				<Col span="12">
 					<FormItem label="开始时间" prop="request_sdate">
 						<DatePicker
-							:disabled="formItem.cuserid != userinfo.userId"
+							:disabled="formItem.cuserid != userinfo.userId || state == 2"
 							type="date"
 							placeholder="选择开始时间"
 							style="width:254px"
@@ -67,7 +74,7 @@
 				<Col span="12">
 					<FormItem label="结束时间" prop="request_edate">
 						<DatePicker
-							:disabled="formItem.cuserid != userinfo.userId"
+							:disabled="formItem.cuserid != userinfo.userId || state == 2"
 							type="date"
 							placeholder="选择结束时间"
 							style="width:254px"
@@ -80,7 +87,7 @@
 				<Col span="12">
 					<FormItem label="联系人" prop="contacts_name">
 						<Input
-							:disabled="formItem.cuserid != userinfo.userId"
+							:disabled="formItem.cuserid != userinfo.userId || state == 2"
 							v-model="formItem.contacts_name"
 							placeholder="输入联系人姓名"></Input>
 					</FormItem>
@@ -88,7 +95,7 @@
 				<Col span="12">
 					<FormItem label="联系电话" prop="contacts_tel">
 						<Input
-							:disabled="formItem.cuserid != userinfo.userId"
+							:disabled="formItem.cuserid != userinfo.userId || state == 2"
 							v-model="formItem.contacts_tel"
 							placeholder="输入联系电话"></Input>
 					</FormItem>
@@ -102,7 +109,7 @@
 					placeholder="文件路径" />
 				<div class="upload_box">
 					<Upload
-						v-if="formItem.cuserid == userinfo.userId"
+						v-if="formItem.cuserid == userinfo.userId || state != 2"
 						ref="uploadFiles"
 						action="http://10.64.5.140:8888/DataService/kway/data/Applyupload"
 						:on-success="fnUploadSuccess">
@@ -111,21 +118,26 @@
 				</div>
 			</FormItem>
 			<FormItem label="交换方式" prop="exchange_type">
-				<RadioGroup v-model="formItem.exchange_type" v-if="formItem.cuserid == userinfo.userId">
+				<RadioGroup v-model="formItem.exchange_type" v-if="formItem.cuserid == userinfo.userId && state != 2">
 					<Radio :label="item.id" v-for="item in exchangeList">{{ item.remarks }}</Radio>
 				</RadioGroup>
-				<p v-if="formItem.cuserid != userinfo.userId">{{ formItem.kv_name }}</p>
+				<p v-if="formItem.cuserid != userinfo.userId || state == 2">{{ formItem.kv_name }}</p>
 			</FormItem>
 			<FormItem label="申请用途" prop="request_purpose">
 				<Input
-					:disabled="formItem.cuserid != userinfo.userId"
+					:disabled="formItem.cuserid != userinfo.userId || state == 2"
 					v-model="formItem.request_purpose"
 					type="textarea"
 					:autosize="{minRows: 3}">
 				</Input>
 			</FormItem>
 			<FormItem>
-				<Button v-if="formItem.cuserid == userinfo.userId" type="info" @click="handleSubmit('formItem', 1)">保存到草稿</Button>
+				<Button
+					v-if="formItem.cuserid == userinfo.userId && state != 2"
+					type="info"
+					@click="handleSubmit('formItem', 1)">
+					保存到草稿
+				</Button>
 			</FormItem>
 		</Form>
 		<Table v-if="tabData.length" stripe :columns="column" :data="tabData"></Table>

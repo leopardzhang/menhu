@@ -63,6 +63,7 @@ export default {
 		};
 
 		return {
+			uploadUrl: $apis.url,
 			loading: true,
 			loadingRight: false,
 
@@ -451,7 +452,12 @@ export default {
 						contentType: "application/json",
 						data: JSON.stringify(_this.formItem),
 						success(res) {
-							_this.$Message.success('申请成功!');
+							if(sts == 1) {
+								_this.$Message.success('已保存至草稿!');
+							} else {
+								_this.$Message.success('申请成功!');
+							}
+
 							_this.showModel = false;
 							_this.$refs.model.buttonLoading = false;
 						},
@@ -482,7 +488,7 @@ export default {
 			const _this = this;
 
 			if(this.userinfo) {
-				if(table_orgid != this.userinfo.org_id) {
+				if(table_orgid != this.userinfo.orgId) {
 					$.ajax({
 						url: `${$apis.url}/DataService/kway/data/getSf`,
 						type: 'GET',

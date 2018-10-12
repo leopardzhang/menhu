@@ -137,9 +137,13 @@ export default {
 					}
 				});
 			})
+		},
 
-
-
+		/**
+		 * 暂未开放
+		 */
+		notShow() {
+			this.$Message.warning('该模块暂未开放');
 		}
 	},
 	computed: {

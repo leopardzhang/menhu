@@ -145,7 +145,6 @@
                                 </div>
 								<div class="info-list">
                                     <Table
-										v-if="dataTable.rows"
 										border
 										stripe
 										:columns="dataColumns"

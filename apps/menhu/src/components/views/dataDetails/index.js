@@ -476,7 +476,7 @@ export default {
 				type: 'GET',
 				data: {
 					table_id: _this.table_id,
-					orgid: _this.userinfo.org_id,
+					orgid: _this.userinfo.orgId,
 					offset: _this.offset,
 					limit: _this.limit
 				},
@@ -486,7 +486,9 @@ export default {
 						type: 'index',
 						align: 'left'
 					}];
-
+					if(res[0].total == 0 ) {
+						return false;
+					}
 					$.each(res[0].rows, function(index, value) {
 						console.log(value);
 						const tabName = value.col_name;
@@ -561,7 +563,8 @@ export default {
 				url: `${$apis.url}/DataService/kway/data/metadataquerydown`,
 				type: 'GET',
 				data: {
-					table_id: _this.table_id
+					table_id: _this.table_id,
+					userId: _this.userinfo.userId
 				},
 				success(res) {
 					_this.pageTable = res.data;
