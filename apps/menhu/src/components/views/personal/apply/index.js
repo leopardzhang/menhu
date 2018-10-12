@@ -254,39 +254,42 @@ export default {
 		handleSubmit (name, sts) {
 			const _this = this;
 
-			_this.formItem.sts = sts;
+			if(this.formItem.cuserid == this.userinfo.userId) {
+				_this.formItem.sts = sts;
 
-            this.$refs[name].validate((valid) => {
-                if (valid) {
-					$.each(_this.formItem, function(index, value) {
-						if(/date/.test(index)) {
-							_this.formItem[index] = formatDate(value);
-						}
-					});
+	            this.$refs[name].validate((valid) => {
+	                if (valid) {
+						$.each(_this.formItem, function(index, value) {
+							if(/date/.test(index)) {
+								_this.formItem[index] = formatDate(value);
+							}
+						});
 
-
-
-					$.ajax({
-						url: `${$apis.url}/DataService/kway/data/addDataRequest`,
-						type: 'POST',
-						contentType: "application/json",
-						data: JSON.stringify(_this.formItem),
-						success(res) {
-							_this.$Message.success('申请成功!');
-							_this.showModel = false;
+						$.ajax({
+							url: `${$apis.url}/DataService/kway/data/addDataRequest`,
+							type: 'POST',
+							contentType: "application/json",
+							data: JSON.stringify(_this.formItem),
+							success(res) {
+								_this.$Message.success('申请成功!');
+								_this.showModel = false;
+								_this.$refs.model.buttonLoading = false;
+							},
+							fail(err) {
+								console.log(err);
+							}
+						});
+	                } else {
+						_this.$Message.error('连接超时!请重试或联系管理员');
+	                    setTimeout(() => {
 							_this.$refs.model.buttonLoading = false;
-						},
-						fail(err) {
-							console.log(err);
-						}
-					});
-                } else {
-					_this.$Message.error('连接超时!请重试或联系管理员');
-                    setTimeout(() => {
-						_this.$refs.model.buttonLoading = false;
-					}, 2000);
-                }
-            });
+						}, 2000);
+	                }
+	            });
+			} else {
+				_this.showModel = false;
+				_this.$refs.model.buttonLoading = false;
+			}
 		}
 	}
 }

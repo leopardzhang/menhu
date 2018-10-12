@@ -476,7 +476,7 @@ export default {
 				type: 'GET',
 				data: {
 					table_id: _this.table_id,
-					orgid: _this.tableData.dataList.org_id,
+					orgid: _this.userinfo.org_id,
 					offset: _this.offset,
 					limit: _this.limit
 				},
@@ -486,7 +486,9 @@ export default {
 						type: 'index',
 						align: 'left'
 					}];
+
 					$.each(res[0].rows, function(index, value) {
+						console.log(value);
 						const tabName = value.col_name;
 						if(tabName.indexOf('url') >= 0) {
 							_this.dataColumns.push({
